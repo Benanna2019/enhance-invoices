@@ -94,3 +94,14 @@ I am a typescript lover and I know I can get most of the typescript goodies with
 _You can use typescript with enhance_ I just found it to be rather difficult when I initially tried to do so. This was also probably a me problem.
 
 And that is it! Below are additions to this app you can add should you so choose. I do think this could be a good demo app but I am equally sure that the enhance team may want to tidy things up a bit and make it more feature complete.
+
+- [ ] - add enhance/form-elements to all forms
+- [ ] - for invoice line-items, we need a way to add and remove line items to the form. All that should need to be added is a function to add a new random id to a lineitems array that is used to render lineItem inputs as well as a function to remove line item inputs. Check the `<new-invoice></new-invoice>` custom element to begin looking at line items. If you clone this repo and start the server, got to `/sales/invoices/new` to see the form and the plus icon and minus icon that should add and remove inputs
+- [ ] - add browser folder
+- [ ] - add deposit route to display deposits for a given deposit id. If you go to `/sales/invoices` and click on an invoice in the invoice list, you will see a deposit on the invoice details pain. Clicking that deposit should navigate you to a route like `/sales/deposits/$depositId`
+- [ ] - On that page you should have the ability to delete deposits. If you want to look at code for how this is done in other frameworks, [here is how it is done](https://github.com/Benanna2019/Svelte-Invoices/tree/main/src/routes/sales/deposits) in the svelte version of this app.
+- [ ] - use the `@begin/validator` package to add validation for forms
+- [ ] - add users. This could probably just be another table in DynamoDB and then you could give the customers a property of user_id that relates to the user key. The the user would only be able to see customers they have/create
+- [ ] - after adding a user, add session capabilities to routes.
+- [ ] - To mirror the other apps, add github OAuth
+
