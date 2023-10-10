@@ -2,7 +2,6 @@ import {
   getInvoiceData,
   getAllInvoiceData,
 } from "../../../models/invoices.mjs";
-import { currencyFormatter } from "../../../models/helpers.mjs";
 import { createId } from "@paralleldrive/cuid2";
 import {
   parseDate,
@@ -60,7 +59,6 @@ export async function get(req) {
       path: req.path,
       invoiceDetails,
       invoices,
-      currencyFormatter,
       dueSoonAmount,
       overdueAmount,
     },
@@ -77,50 +75,50 @@ export async function upsertDeposit(req) {
   const intent = formData.intent;
   invariant(typeof intent === "string", "intent required");
   switch (intent) {
-    case "create-deposit": {
-      const amount = Number(formData.amount);
-      const depositDateString = formData.depositDate;
-      const note = formData.note;
-      invariant(!Number.isNaN(amount), "amount must be a number");
-      invariant(typeof depositDateString === "string", "dueDate is required");
-      invariant(typeof note === "string", "dueDate is required");
-      const deposit_date = parseDate(depositDateString);
+  case "create-deposit": {
+    const amount = Number(formData.amount);
+    const depositDateString = formData.depositDate;
+    const note = formData.note;
+    invariant(!Number.isNaN(amount), "amount must be a number");
+    invariant(typeof depositDateString === "string", "dueDate is required");
+    invariant(typeof note === "string", "dueDate is required");
+    const deposit_date = parseDate(depositDateString);
 
-      const errors = {
-        amount: validateAmount(amount),
-        depositDate: validateDepositDate(deposit_date),
-      };
-      const hasErrors = Object.values(errors).some(
-        (errorMessage) => errorMessage
-      );
-      if (hasErrors) {
-        return {
-          json: {
-            errors,
-          },
-        };
-      }
-
-      const data = {
-        key: createId(),
-        created_at: new Date().toISOString(),
-        invoice_id: invoiceId,
-        amount,
-        deposit_date: deposit_date.getTime(),
-        note,
-      };
-
-      await createDeposit(data);
-      return {
-        location: `/sales/invoices/${invoiceId}`,
-      };
-    }
-    default: {
+    const errors = {
+      amount: validateAmount(amount),
+      depositDate: validateDepositDate(deposit_date),
+    };
+    const hasErrors = Object.values(errors).some(
+      (errorMessage) => errorMessage
+    );
+    if (hasErrors) {
       return {
         json: {
-          error: `Unsupported intent: ${intent}`,
+          errors,
         },
       };
     }
+
+    const data = {
+      key: createId(),
+      created_at: new Date().toISOString(),
+      invoice_id: invoiceId,
+      amount,
+      deposit_date: deposit_date.getTime(),
+      note,
+    };
+
+    await createDeposit(data);
+    return {
+      location: `/sales/invoices/${invoiceId}`,
+    };
+  }
+  default: {
+    return {
+      json: {
+        error: `Unsupported intent: ${intent}`,
+      },
+    };
+  }
   }
 }

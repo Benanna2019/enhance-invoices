@@ -1,7 +1,6 @@
 import { getAllCustomers } from "../../../models/customers.mjs";
 
 import { getAllInvoiceData } from "../../../models/invoices.mjs";
-import { currencyFormatter } from "../../../models/helpers.mjs";
 export async function get(req) {
   const invoices = await getAllInvoiceData();
   const customers = await getAllCustomers();
@@ -25,7 +24,6 @@ export async function get(req) {
     json: {
       path: req.path,
       invoices,
-      currencyFormatter,
       dueSoonAmount,
       customers,
       overdueAmount,

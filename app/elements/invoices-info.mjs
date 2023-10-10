@@ -1,5 +1,6 @@
+import { currencyFormatter } from "../models/helpers.mjs";
+
 export default function InvoicesInfo({ html, state }) {
-  const { currencyFormatter } = state.store;
   const { label = "", right = false, amount = 0 } = state.attrs;
 
   return html`

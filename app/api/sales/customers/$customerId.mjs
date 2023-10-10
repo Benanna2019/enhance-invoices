@@ -2,7 +2,6 @@ import {
   getCustomerInfo,
   getAllCustomers,
 } from "../../../models/customers.mjs";
-import { currencyFormatter } from "../../../models/helpers.mjs";
 
 export async function get(req) {
   const { customerId } = req.pathParameters;
@@ -15,7 +14,6 @@ export async function get(req) {
       customers,
       customerInfo,
       customerDetails,
-      currencyFormatter,
     },
   };
 }

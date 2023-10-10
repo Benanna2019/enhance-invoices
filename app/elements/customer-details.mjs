@@ -1,5 +1,7 @@
+import { currencyFormatter } from "../models/helpers.mjs";
+
 export default function CustomerDetailsPage({ html, state }) {
-  let { customerDetails, customerInfo, currencyFormatter } = state.store;
+  let { customerDetails, customerInfo } = state.store;
 
   const lineItemClassName = `flex justify-between border-t border-gray-100 py-4 text-[14px] leading-[24px]`;
 
@@ -21,8 +23,8 @@ export default function CustomerDetailsPage({ html, state }) {
             (detail.dueStatus === "paid"
               ? "text-green-brand"
               : detail.dueStatus === "overdue"
-              ? "text-red-brand"
-              : "")}
+                ? "text-red-brand"
+                : "")}
           >
             ${detail.dueStatusDisplay}
           </td>

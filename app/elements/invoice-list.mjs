@@ -1,5 +1,7 @@
+import { currencyFormatter } from '../models/helpers.mjs'
+
 export default function InvoiceList({ html, state }) {
-  let { invoices, path, currencyFormatter } = state.store;
+  let { invoices, path } = state.store;
 
   const invoiceItems = invoices
     .map((invoice) => {
@@ -14,8 +16,8 @@ export default function InvoiceList({ html, state }) {
         invoice.dueStatus === "paid"
           ? "text-green-brand uppercase"
           : invoice.dueStatus === "overdue"
-          ? "text-red-brand uppercase"
-          : "uppercase";
+            ? "text-red-brand uppercase"
+            : "uppercase";
 
       return html`
         <a href="/sales/invoices/${key}" class="${isActive}">

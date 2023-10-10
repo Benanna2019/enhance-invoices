@@ -20,23 +20,23 @@ export function getInvoiceDerivedData(invoice) {
     totalAmount === totalDeposits
       ? "paid"
       : totalDeposits > totalAmount
-      ? "overpaid"
-      : daysToDueDate < 0
-      ? "overdue"
-      : "due";
+        ? "overpaid"
+        : daysToDueDate < 0
+          ? "overdue"
+          : "due";
 
   const dueStatusDisplay =
     dueStatus === "paid"
       ? "Paid"
       : dueStatus === "overpaid"
-      ? "Overpaid"
-      : dueStatus === "overdue"
-      ? "Overdue"
-      : daysToDueDate === 0
-      ? "Due today"
-      : daysToDueDate === 1
-      ? `Due tomorrow`
-      : `Due in ${daysToDueDate} days`;
+        ? "Overpaid"
+        : dueStatus === "overdue"
+          ? "Overdue"
+          : daysToDueDate === 0
+            ? "Due today"
+            : daysToDueDate === 1
+              ? `Due tomorrow`
+              : `Due in ${daysToDueDate} days`;
 
   return {
     totalAmount,
