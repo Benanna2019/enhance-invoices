@@ -20,7 +20,7 @@ As I said above, I had to learn a ton in this application while building with en
 
 So here are some of my take aways:
 
-### Enahnce is fast
+### Enhance is fast
 
 Using best practices for building functional web apps, enhance splits your application architecture into pure functions that are backed by lambda and dynamo db.
 
@@ -51,13 +51,13 @@ class MyElement extends HTMLElement {
     }
 
     someFunction()
-
-    customElements.define('my-element', MyElement)
 }
+
+customElements.define('my-element', MyElement)
 
 ```
 
-That is actually really difficult for me to wrap my mind around. I guarantee this is a me thing so this is no comment on the architecture/api for pregressive enhancement. Having started with react to get away from `document.something` and having used it for years, this is really difficult, even if it is lower level and mimic's the platform.
+That is actually really difficult for me to wrap my mind around. I guarantee this is a me thing so this is no comment on the architecture/api for progressive enhancement. Having started with react to get away from `document.something` and having used it for years, this is really difficult, even if it is lower level and mimic's the platform.
 
 I think there is a great educational opportunity here though for someone on the enhance team to take a component in react, svelte, vue, etc and show what it looks like as a custom element in enhance.
 
