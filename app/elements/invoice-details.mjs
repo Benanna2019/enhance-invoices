@@ -1,5 +1,7 @@
+import { currencyFormatter } from "../models/helpers.mjs";
+
 export default function InvoiceDetails({ html, state }) {
-  const { invoiceDetails, currencyFormatter } = state.store;
+  const { invoiceDetails } = state.store;
 
   const lineItemClassName =
     "flex justify-between border-t border-gray-100 py-4 text-[14px] leading-[24px]";
@@ -18,10 +20,10 @@ export default function InvoiceDetails({ html, state }) {
         <span
           slot="label-text-children"
           class=${invoiceDetails.dueStatus === "paid"
-            ? "text-green-brand"
-            : invoiceDetails.dueStatus === "overdue"
-            ? "text-red-brand"
-            : ""}
+    ? "text-green-brand"
+    : invoiceDetails.dueStatus === "overdue"
+      ? "text-red-brand"
+      : ""}
         >
           ${invoiceDetails.dueDisplay}
         </span>

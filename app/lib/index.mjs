@@ -1,10 +1,4 @@
 // place files you want to import through the `$lib` alias in this folder.
-export const currencyFormatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 2,
-});
-
 export function validateAmount(amount) {
   if (amount <= 0) return "Must be greater than 0";
   if (Number(amount.toFixed(2)) !== amount) {

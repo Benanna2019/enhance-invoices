@@ -1,5 +1,7 @@
+import { currencyFormatter } from "../models/helpers.mjs";
+
 export default function DepositDetails({ html, state }) {
-  const { invoiceDetails, currencyFormatter } = state.store;
+  const { invoiceDetails } = state.store;
   const { invoiceid } = state.attrs;
 
   const inputClasses = `text-lg w-full rounded border border-gray-500 px-2 py-1`;

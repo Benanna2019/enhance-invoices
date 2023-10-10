@@ -20,7 +20,7 @@ As I said above, I had to learn a ton in this application while building with en
 
 So here are some of my take aways:
 
-### Enahnce is fast
+### Enhance is fast
 
 Using best practices for building functional web apps, enhance splits your application architecture into pure functions that are backed by lambda and dynamo db.
 
@@ -51,13 +51,13 @@ class MyElement extends HTMLElement {
     }
 
     someFunction()
-
-    customElements.define('my-element', MyElement)
 }
+
+customElements.define('my-element', MyElement)
 
 ```
 
-That is actually really difficult for me to wrap my mind around. I guarantee this is a me thing so this is no comment on the architecture/api for pregressive enhancement. Having started with react to get away from `document.something` and having used it for years, this is really difficult, even if it is lower level and mimic's the platform.
+That is actually really difficult for me to wrap my mind around. I guarantee this is a me thing so this is no comment on the architecture/api for progressive enhancement. Having started with react to get away from `document.something` and having used it for years, this is really difficult, even if it is lower level and mimic's the platform.
 
 I think there is a great educational opportunity here though for someone on the enhance team to take a component in react, svelte, vue, etc and show what it looks like as a custom element in enhance.
 
@@ -75,15 +75,13 @@ In Enhance, you don't really have the same concept. You have attributes. And you
 
 #### Pure functions
 
-Custom elements are pure functions. You are held accountable to this in enhance because you can't import anything into your custom element file. So where as you may have your long list of imports in any other frontend framework, you don't have that in enhance. Whatever you need should come from the attributes and store.
+Custom elements are pure functions. Whatever you need should come from the attributes and store.
 
 This is actually a really nice feature. Some components get so large that you can't really seem to discern what the component itself is doing. But with pure functions that are responsible for a certain bit of ui, you can easily compose your custom elements because they are all exposed to the same store/state rather than passing it around everywhere.
 
 #### Api routes
 
 I have already mentioned features of api routes but more like svelte and sveltekit, enhance has api routes that run parallel with your ui routes. This means you can use any of the traditional http methods in a api route. Most often you reach for get which will return the data in the store for the api route that is exposed to the custom elements state as well as reaching for post for handling mutations.
-
-If you need to do any importing and use of different libraries/packages/etc you can do all of that here in your api routes. You can expose functions to your custom element as well. So for instance, in this app there is a function called `currencyFormatter` that is used a good bit. But you can import it in your custom element as you would a react component. But, you can add it to your api route, return it in the get method, and then use it in your html.
 
 ### Conclusion & Additions
 

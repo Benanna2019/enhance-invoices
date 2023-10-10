@@ -1,5 +1,7 @@
+import { currencyFormatter } from "../models/helpers.mjs";
+
 export default function LineItemDisplay({ html, state }) {
-  const { currencyFormatter, invoiceDetails } = state.store;
+  const { invoiceDetails } = state.store;
 
   const lineItemClassName = `flex justify-between border-t border-gray-100 py-4 text-[14px] leading-[24px]`;
 
